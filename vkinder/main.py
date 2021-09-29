@@ -48,7 +48,12 @@ def start_vkinder(vki, session_maker):
                 [message.write(item) for item in new_id['photo']]
 
                 dump_it(session_maker, new_id['user'], new_id['photo'])
-                dump_list += [new_id['user'].my_dict()]
+
+                message.write(f"Нажми 'q' чтобы выйти или найди еще пару")
+                q = message.read()
+                if q == 'q':
+                    message.write(f"Заходи еще")
+                    break
 
 if __name__ == '__main__':
     try:
